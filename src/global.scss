@@ -9,3 +9,16 @@
 @import '~@ionic/angular/css/text-alignment.css';
 @import '~@ionic/angular/css/text-transformation.css';
 @import '~@ionic/angular/css/flex-utils.css';
+
+@mixin box() {
+    box-shadow: 1px 1px 13px 0px lightgrey;
+    border-radius: 5px;
+}
+
+// colors
+$grey: #4e4e4e;
+$softGrey: #959595;
+$activeColor: #dcf0ff;
+
+
+$bigText: 24px;

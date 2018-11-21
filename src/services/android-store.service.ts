@@ -86,9 +86,4 @@ export class AndroidStoreService implements IStore {
             });
         })
     }
-
-
-
-
-
 }

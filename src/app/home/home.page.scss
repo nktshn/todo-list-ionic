@@ -1,1 +1,62 @@
+@import 'src/global.scss';
 
+
+.tasks-wrap {
+    padding: 10px 0;
+}
+
+.task-body {
+    display: flex;
+    justify-content: space-between;
+}
+
+.task-right-part {
+    display: flex;
+    flex-direction: column;
+}
+
+.task {
+    margin: 10px 15px;
+    padding: 15px;
+    @include box();
+    transition: 0.2s;
+    transition-timing-function: ease-out;
+    &:active {
+      background-color: $activeColor;
+    }
+}
+
+.task-header {
+    font-size: $bigText;
+    color: $grey;
+    font-weight: 400;
+}
+
+.task-description {
+    color: $softGrey;
+    margin-top: 5px;
+}
+
+.task-bottom {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 11px;
+    font-size: 14px;
+    color: $softGrey;
+}
+
+.priority-badge {
+    border-radius: 5px;
+    padding: 5px 15px;
+    color: white;
+}
+
+.task-date {
+    padding-top: 6px;
+}
+
+.task ion-icon, {
+    height: 30px;
+    width: 30px;
+    color: $softGrey;
+}

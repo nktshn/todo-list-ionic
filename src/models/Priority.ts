@@ -5,6 +5,13 @@ export class Priority {
     }
     readonly id: number;
     title: PriorityTitle;
+
+    static readonly colorMap = {
+        0:'#e02727',
+        1:'#e7c12b',
+        2:'#66adfb',
+        3:'#c8c8c8',
+    }
 }
 
 type PriorityTitle = 'Critical' | 'Major' | 'Normal' | 'Minor';
@@ -15,3 +22,4 @@ const priorityMap = {
     'Normal': 2,
     'Minor': 3
 }
+

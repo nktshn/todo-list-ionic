@@ -20,33 +20,45 @@ export class HomePage implements OnInit {
     }
 
     ngOnInit(): void {
-        let priority: Priority = new Priority('Critical');
-        let task: Task = {
-            title: 'Task 1',
-            description: 'My first task',
-            priority: priority,
-            targetDate: 126351635,
-        };
-        // this.androidStore.createTask(task).subscribe(res => {
-        //     console.log(res);
-        // });
-        // this.androidStore.getTask(3).subscribe((task: TaskResponse) => {
-        //     console.log(task);
-        //     task.title = 'Edited task';
-        //     this.androidStore.editTask(task).subscribe(res => {
-        //         console.log(res);
-        //         this.androidStore.getTask(3).subscribe((task: TaskResponse) => {
-        //             console.log('edited', task);
-        //         })
-        //     })
-        // });
-        // this.androidStore.deleteTask(3).subscribe(res => {
-        //     console.log(res);
-        // })
         this.androidStore.getTasks().subscribe(res => {
-            console.log(res);
-            
-        })
+            this.tasks = res;
+        });
+        // this.generateTasks();
+    }
+
+    private getPriorityColor(id) {
+        return Priority.colorMap[id];
+    }
+
+    private generateTasks() {
+        this.androidStore.createTask(
+            {
+                title: 'Go to bed',
+                description: 'I need to go to sleep earlear',
+                priority: new Priority('Critical'),
+                targetDate: 123123123
+            },
+        ).subscribe(() => {
+            this.androidStore.createTask(
+                {
+                    title: 'Write this app',
+                    description: 'Have no time to end this app',
+                    priority: new Priority('Major'),
+                    targetDate: 123134523
+                },
+            ).subscribe(() => {
+                this.androidStore.createTask(
+                    {
+                        title: 'Buy pen',
+                        description: 'Need something for writing',
+                        priority: new Priority('Normal'),
+                        targetDate: 193123123
+                    },
+                ).subscribe(() => { });
+            }
+            );
+        });
+
 
     }
 }
