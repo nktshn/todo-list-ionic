@@ -33,26 +33,26 @@ export class HomePage implements OnInit {
     private generateTasks() {
         this.androidStore.createTask(
             {
-                title: 'Go to bed',
-                description: 'I need to go to sleep earlear',
-                priority: new Priority('Critical'),
-                targetDate: 123123123
+                title: 'One more task I gonna do',
+                description: 'I dont even know what this task about',
+                priority: new Priority('Minor'),
+                targetDate: 12123123
             },
         ).subscribe(() => {
             this.androidStore.createTask(
                 {
-                    title: 'Write this app',
-                    description: 'Have no time to end this app',
+                    title: 'Tasky task',
+                    description: 'That\'s it',
                     priority: new Priority('Major'),
-                    targetDate: 123134523
+                    targetDate: 1183134333
                 },
             ).subscribe(() => {
                 this.androidStore.createTask(
                     {
-                        title: 'Buy pen',
-                        description: 'Need something for writing',
+                        title: 'Write book',
+                        description: '',
                         priority: new Priority('Normal'),
-                        targetDate: 193123123
+                        targetDate: 123123123
                     },
                 ).subscribe(() => { });
             }
