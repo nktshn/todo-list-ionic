@@ -1,7 +1,10 @@
 <ion-content>
+    <header>
+        <span>Todo list</span>
+    </header>
     <div class='content'>
-        <div class="task" *ngFor="let task of tasks">
-            <div [routerLink]="'/task/' + task.id" class="task-body">
+        <div class="task" tappable (click)="onRedirect('/task/'+task.id, task.id)" *ngFor="let task of tasks">
+            <div class="task-body">
                 <div class="task-left-part">
                     <div class="task-header">
                         <span>{{task.title}}</span>

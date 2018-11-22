@@ -28,6 +28,7 @@
     "cordova-sqlite-storage": "2.5.1",
     "core-js": "^2.5.4",
     "moment": "^2.22.2",
+    "ngx-textarea-autosize": "^2.0.0",
     "rxjs": "~6.3.3",
     "zone.js": "~0.8.26"
   },

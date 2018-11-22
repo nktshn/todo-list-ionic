@@ -10,6 +10,8 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { IonicStorageModule } from '@ionic/storage';
 import { TaskDetailsComponent } from './task-details/task-details.component';
+import { HomePageModule } from './home/home.module';
+import { TaskDetailsModule } from './task-details/task-details.module';
 
 @NgModule({
     declarations: [AppComponent],
@@ -18,7 +20,10 @@ import { TaskDetailsComponent } from './task-details/task-details.component';
         BrowserModule, 
         IonicModule.forRoot(), 
         AppRoutingModule,
-        IonicStorageModule.forRoot()
+        IonicStorageModule.forRoot(),
+        HomePageModule,
+        TaskDetailsModule,
+        
     ],
     providers: [
         StatusBar,

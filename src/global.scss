@@ -10,23 +10,53 @@
 @import '~@ionic/angular/css/text-transformation.css';
 @import '~@ionic/angular/css/flex-utils.css';
 
-ion-router-outlet {
-    margin-top: 58px;
-}
-
-.content {
-    padding: 10px 20px;
-}
-
 @mixin box() {
     box-shadow: 1px 1px 13px 0px lightgrey;
     border-radius: 5px;
 }
 
+body * {
+    transition: 0.2s;
+}
 // colors
+$darkGrey: #404040;
 $grey: #4e4e4e;
 $softGrey: #959595;
 $activeColor: #dcf0ff;
+// sizes
+$headerHeight: 58px;
 
 
 $bigText: 24px;
+
+// STYLES
+
+ion-router-outlet {}
+
+ion-header {
+    position: fixed;
+}
+
+.content {
+    margin-top: $headerHeight;
+    min-height: calc(100% - #{$headerHeight})!important;
+    padding: 10px 20px;
+}
+
+header {
+    position: fixed;
+    width: 100%;
+    background-color: white;
+    z-index: 10;
+    height: 58px;
+    display: flex;
+    align-items: center;
+    padding: 10px 20px;
+    font-size: 22px;
+    font-weight: 600;
+    color: $darkGrey;
+    box-shadow: 1px 1px 11px $softGrey;
+    ion-icon:first-child {
+        margin-right: 10px;
+    }
+}
