@@ -1,7 +1,7 @@
 export class Priority {
     constructor(title: PriorityTitle) {
         this.title = title;
-        this.id = priorityMap[title];
+        this.id = Priority.priorityMap[title];
     }
     readonly id: number;
     title: PriorityTitle;
@@ -11,15 +11,16 @@ export class Priority {
         1:'#e7c12b',
         2:'#66adfb',
         3:'#c8c8c8',
+    };
+    static readonly priorityMap = {
+        'Critical': 0,
+        'Major': 1,
+        'Normal': 2,
+        'Minor': 3
     }
 }
 
-type PriorityTitle = 'Critical' | 'Major' | 'Normal' | 'Minor';
+export type PriorityTitle = 'Critical' | 'Major' | 'Normal' | 'Minor';
 
-const priorityMap = {
-    'Critical': 0,
-    'Major': 1,
-    'Normal': 2,
-    'Minor': 3
-}
+
 

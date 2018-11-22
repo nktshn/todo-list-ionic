@@ -1,0 +1,8 @@
+<div *ngIf="priorities" class="priority-select-wrap">
+    <div class="block">
+        <span>Select priority: </span>
+    </div>
+    <div class="block" *ngFor="let priority of priorities">
+        <span class="priority-badge" (click)="emitSelection(priority)" [ngStyle]="{'background-color': getPriorityColor(priority.id)}">{{priority.title}}</span>
+    </div>
+</div>

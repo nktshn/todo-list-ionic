@@ -1,6 +1,11 @@
 <ion-content>
     <header>
-        <span>Todo list</span>
+        <div class="header-left-part">
+            <span>Todo list</span>
+        </div>
+        <div class="header-right-part">
+            <ion-icon (click)="onCreateTask()" class="right-icon" name="add"></ion-icon>
+        </div>
     </header>
     <div class='content'>
         <div class="task" tappable (click)="onRedirect('/task/'+task.id, task.id)" *ngFor="let task of tasks">
@@ -14,7 +19,6 @@
                     </div>
                 </div>
                 <div class="task-right-part">
-                    <!-- <ion-icon name="expand"></ion-icon> -->
                     <ion-icon name="trash"></ion-icon>
                 </div>
             </div>

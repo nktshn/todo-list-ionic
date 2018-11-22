@@ -4,6 +4,7 @@ import { AndroidStoreService } from 'src/services/android-store.service';
 import { TaskResponse } from 'src/models/TaskResponse';
 import { Priority } from 'src/models/Priority';
 import { Router } from '@angular/router';
+import { ModalController } from '@ionic/angular';
 
 @Component({
     selector: 'app-home',
@@ -16,7 +17,8 @@ export class HomePage implements OnInit {
 
     constructor(
         private androidStore: AndroidStoreService,
-        private router: Router
+        private router: Router,
+
     ) {
 
     }
@@ -30,6 +32,13 @@ export class HomePage implements OnInit {
     onRedirect(url: string, params: any) {
         this.router.navigate([url], params);
     }
+
+    onCreateTask() {
+        console.log('create');
+
+    }
+
+   
 
     getPriorityColor(id) {
         return Priority.colorMap[id];

@@ -13,10 +13,12 @@ import { TaskDetailsComponent } from './task-details/task-details.component';
 import { HomePageModule } from './home/home.module';
 import { TaskDetailsModule } from './task-details/task-details.module';
 import { FormsModule } from '@angular/forms';
+import { PrioritySelectComponent } from 'src/shared/components/priority-select/priority-select.component';
 
 @NgModule({
     declarations: [AppComponent],
-    entryComponents: [],
+    entryComponents: [
+    ],
     imports: [
         BrowserModule, 
         IonicModule.forRoot(), 
