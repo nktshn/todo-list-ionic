@@ -29,9 +29,10 @@
                             <div *ngIf="isPrioritySelectorShown" class="block">
                                 <app-priority-select (prioritySelected)="onPrioritySelected($event)"></app-priority-select>
                             </div>
-                            <div class="block">
+                            <div class="block fa">
                                 <span>Target date: </span>
-                                <span class="task-date">{{task.targetDate | unixDate}}</span>
+                                <!-- <span class="task-date">{{task.targetDate | unixDate}}</span> -->
+                                <ng-datepicker [options]="dateOptions" position="top-left" [(ngModel)]="date"></ng-datepicker>
                             </div>
                         </div>
                         <div class="task-bottom">

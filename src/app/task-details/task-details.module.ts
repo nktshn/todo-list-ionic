@@ -6,6 +6,7 @@ import { IonicModule } from '@ionic/angular';
 import { SharedModule } from 'src/shared/shared.module';
 import { TextareaAutosizeModule } from 'ngx-textarea-autosize';
 import { FormsModule } from '@angular/forms';
+import { NgDatepickerModule } from 'ng2-datepicker';
 
 
 @NgModule({
@@ -18,6 +19,7 @@ import { FormsModule } from '@angular/forms';
         SharedModule,
         TextareaAutosizeModule,
         FormsModule,
+        NgDatepickerModule,
         RouterModule.forChild([
             {
                 path: '',
