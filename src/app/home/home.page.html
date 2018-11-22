@@ -19,7 +19,7 @@
                     </div>
                 </div>
                 <div class="task-right-part">
-                    <ion-icon name="trash"></ion-icon>
+                    <ion-icon tappable (click)="onRemoveTask(task.id, $event)" name="trash"></ion-icon>
                 </div>
             </div>
             <div class="task-bottom">

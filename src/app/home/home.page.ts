@@ -6,6 +6,7 @@ import { Priority } from 'src/models/Priority';
 import { Router } from '@angular/router';
 import { ModalController } from '@ionic/angular';
 import { AndroidApiService } from 'src/services/android-api.service';
+import { TaskDetailsService } from '../task-details/task-details.service';
 
 @Component({
     selector: 'app-home',
@@ -20,15 +21,14 @@ export class HomePage implements OnInit {
         private androidStore: AndroidStoreService,
         private androidApi: AndroidApiService,
         private router: Router,
+        private taskDetailsService: TaskDetailsService
 
     ) {
 
     }
 
     ngOnInit(): void {
-        this.androidStore.getTasks().subscribe(res => {
-            this.tasks = res;
-        });
+        this.loadTasks();
     }
 
     onRedirect(url: string, params: any) {
@@ -37,12 +37,26 @@ export class HomePage implements OnInit {
 
     onCreateTask() {
         console.log('create');
-        
+
+    }
+
+    onRemoveTask(taskId, event) {
+        event.preventDefault();
+        event.stopPropagation();
+        this.taskDetailsService.showRemoveTaskConfirmation(taskId).subscribe(res => {
+            this.loadTasks();
+        });
     }
 
 
 
     getPriorityColor(id) {
         return Priority.colorMap[id];
+    }
+
+    loadTasks() {
+        this.androidStore.getTasks().subscribe(res => {
+            this.tasks = res;
+        });
     }
 }

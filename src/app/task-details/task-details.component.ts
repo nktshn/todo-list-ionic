@@ -7,6 +7,7 @@ import { AndroidApiService } from 'src/services/android-api.service';
 import { ModalController } from '@ionic/angular';
 import { PrioritySelectComponent } from 'src/shared/components/priority-select/priority-select.component';
 import { DatepickerOptions } from 'ng2-datepicker';
+import { TaskDetailsService } from './task-details.service';
 
 @Component({
     selector: 'app-task-details',
@@ -33,6 +34,7 @@ export class TaskDetailsComponent implements OnInit {
         private router: Router,
         private androidApi: AndroidApiService,
         private androidStorage: AndroidStoreService,
+        private service: TaskDetailsService
     ) { }
 
     ngOnInit() {
@@ -68,23 +70,9 @@ export class TaskDetailsComponent implements OnInit {
     }
 
     onRemoveTask() {
-        this.androidApi.showConfirm(
-            'Delete task #' + this.task.id,
-            'Are you sure to delete this task?',
-            'Cancel',
-            'Delete',
-            () => {
-                // disagree
-            },
-            () => {
-                // agree
-                this.androidStorage.deleteTask(this.task.id).subscribe(res => {
-                    if (res) {
-                        this.androidApi.presentToast('Task has been deleted successfully');
-                        this.router.navigateByUrl('home');
-                    }
-                }) 
-            });
+        this.service.showRemoveTaskConfirmation(this.task.id).subscribe(res => {
+            
+        });
     }
 
 }
