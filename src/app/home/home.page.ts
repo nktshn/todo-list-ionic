@@ -5,6 +5,7 @@ import { TaskResponse } from 'src/models/TaskResponse';
 import { Priority } from 'src/models/Priority';
 import { Router } from '@angular/router';
 import { ModalController } from '@ionic/angular';
+import { AndroidApiService } from 'src/services/android-api.service';
 
 @Component({
     selector: 'app-home',
@@ -17,6 +18,7 @@ export class HomePage implements OnInit {
 
     constructor(
         private androidStore: AndroidStoreService,
+        private androidApi: AndroidApiService,
         private router: Router,
 
     ) {
@@ -35,10 +37,10 @@ export class HomePage implements OnInit {
 
     onCreateTask() {
         console.log('create');
-
+        
     }
 
-   
+
 
     getPriorityColor(id) {
         return Priority.colorMap[id];

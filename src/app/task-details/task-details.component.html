@@ -35,7 +35,7 @@
                                 <ng-datepicker [options]="dateOptions" position="top-left" [(ngModel)]="date"></ng-datepicker>
                             </div>
                         </div>
-                        <div class="task-bottom">
+                        <div tappable (click)="onRemoveTask()" class="task-bottom">
                             <ion-icon name="trash"></ion-icon>
                             <span>Remove task</span>
                         </div>

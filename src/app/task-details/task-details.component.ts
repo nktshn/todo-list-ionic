@@ -67,4 +67,24 @@ export class TaskDetailsComponent implements OnInit {
         return Priority.colorMap[id];
     }
 
+    onRemoveTask() {
+        this.androidApi.showConfirm(
+            'Delete task #' + this.task.id,
+            'Are you sure to delete this task?',
+            'Cancel',
+            'Delete',
+            () => {
+                // disagree
+            },
+            () => {
+                // agree
+                this.androidStorage.deleteTask(this.task.id).subscribe(res => {
+                    if (res) {
+                        this.androidApi.presentToast('Task has been deleted successfully');
+                        this.router.navigateByUrl('home');
+                    }
+                }) 
+            });
+    }
+
 }
