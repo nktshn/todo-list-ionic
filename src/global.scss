@@ -10,6 +10,14 @@
 @import '~@ionic/angular/css/text-transformation.css';
 @import '~@ionic/angular/css/flex-utils.css';
 
+ion-router-outlet {
+    margin-top: 58px;
+}
+
+.content {
+    padding: 10px 20px;
+}
+
 @mixin box() {
     box-shadow: 1px 1px 13px 0px lightgrey;
     border-radius: 5px;

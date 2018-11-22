@@ -1,15 +1,7 @@
-<ion-header>
-    <ion-toolbar>
-        <ion-title>
-            Todo list
-        </ion-title>
-    </ion-toolbar>
-</ion-header>
-
 <ion-content>
-    <div class='tasks-wrap'>
+    <div class='content'>
         <div class="task" *ngFor="let task of tasks">
-            <div class="task-body">
+            <div [routerLink]="'/task/' + task.id" class="task-body">
                 <div class="task-left-part">
                     <div class="task-header">
                         <span>{{task.title}}</span>
@@ -19,8 +11,8 @@
                     </div>
                 </div>
                 <div class="task-right-part">
-                        <!-- <ion-icon name="expand"></ion-icon> -->
-                        <ion-icon name="trash"></ion-icon>
+                    <!-- <ion-icon name="expand"></ion-icon> -->
+                    <ion-icon name="trash"></ion-icon>
                 </div>
             </div>
             <div class="task-bottom">
