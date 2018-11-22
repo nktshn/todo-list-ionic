@@ -23,14 +23,14 @@ $darkGrey: #404040;
 $grey: #4e4e4e;
 $softGrey: #959595;
 $activeColor: #dcf0ff;
+$almostWhite: #f8f8f8;
+$red: #d88181;
+
 // sizes
 $headerHeight: 58px;
-
-
 $bigText: 24px;
 
 // STYLES
-
 ion-router-outlet {}
 
 ion-header {
@@ -51,6 +51,7 @@ header {
     height: 58px;
     display: flex;
     align-items: center;
+    justify-content: space-between;
     padding: 10px 20px;
     font-size: 22px;
     font-weight: 600;
@@ -58,5 +59,9 @@ header {
     box-shadow: 1px 1px 11px $softGrey;
     ion-icon:first-child {
         margin-right: 10px;
+    }
+    .header-left-part, .header-right-part {
+        display: flex;
+        align-items: center;
     }
 }

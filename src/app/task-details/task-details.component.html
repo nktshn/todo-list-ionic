@@ -1,7 +1,12 @@
 <ion-content>
     <header >
-        <ion-icon [routerLink]="'/home'" name="arrow-back"></ion-icon>
-        <span *ngIf="task">Task #{{task.id}}</span>
+        <div class="header-left-part">
+                <ion-icon [routerLink]="'/home'" name="arrow-back"></ion-icon>
+                <span *ngIf="task">Task #{{task.id}}</span>
+        </div>
+        <div class="header-right-part">
+                <ion-icon (click)="onEditTask()" class="right-icon" name="checkmark"></ion-icon>
+        </div>
     </header>
     <div class="content">
         <div *ngIf="task" class="task">
@@ -10,10 +15,10 @@
                     <div class="top-part">
                         <p class='p'>Title</p>
                         <div class="task-header">
-                            <input autosize type="text" class="field" [value]="task.title">
+                            <input autosize type="text" class="field" [(ngModel)]="task.title">
                         </div>
                         <p class='p'>Description</p>
-                        <textarea autosize class="task-details-description field" [value]="task.description"></textarea>
+                        <textarea autosize class="task-details-description field" [(ngModel)]="task.description"></textarea>
                     </div>
                     <div class="bottom-block">
                         <div class="task-top">

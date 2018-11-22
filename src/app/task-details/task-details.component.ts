@@ -27,6 +27,15 @@ export class TaskDetailsComponent implements OnInit {
         })
     }
 
+    onEditTask() {
+        this.androidStorage.editTask(this.task).subscribe(res => {
+            if (res) {
+                this.router.navigateByUrl('home');
+            }
+        })
+    }
+
+
     getPriorityColor(id) {
         return Priority.colorMap[id];
     }

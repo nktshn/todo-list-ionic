@@ -20,9 +20,9 @@
     @include box();
     transition: 0.2s;
     transition-timing-function: ease-out;
-    // &:active {
-    //   background-color: $activeColor;
-    // }
+    &:active {
+      background-color: $almostWhite;
+    }
     &:last-child {
         margin-bottom: 70px;
     }

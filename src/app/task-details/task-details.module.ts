@@ -5,6 +5,7 @@ import { TaskDetailsComponent } from './task-details.component';
 import { IonicModule } from '@ionic/angular';
 import { SharedModule } from 'src/shared/shared.module';
 import { TextareaAutosizeModule } from 'ngx-textarea-autosize';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -16,6 +17,7 @@ import { TextareaAutosizeModule } from 'ngx-textarea-autosize';
         IonicModule,
         SharedModule,
         TextareaAutosizeModule,
+        FormsModule,
         RouterModule.forChild([
             {
                 path: '',

@@ -12,6 +12,7 @@ import { IonicStorageModule } from '@ionic/storage';
 import { TaskDetailsComponent } from './task-details/task-details.component';
 import { HomePageModule } from './home/home.module';
 import { TaskDetailsModule } from './task-details/task-details.module';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
     declarations: [AppComponent],
@@ -23,7 +24,7 @@ import { TaskDetailsModule } from './task-details/task-details.module';
         IonicStorageModule.forRoot(),
         HomePageModule,
         TaskDetailsModule,
-        
+        FormsModule
     ],
     providers: [
         StatusBar,

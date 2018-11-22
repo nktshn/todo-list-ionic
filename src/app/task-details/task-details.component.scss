@@ -43,8 +43,11 @@
     margin-top: 40px;
     align-items: center;
     font-size: 20px;
-    color: #9dbbd6;
+    color: $red;
     // text-decoration-line: underline;
+    ion-icon {
+        color: $red;
+    }
 }
 
 .block > span:first-child {
