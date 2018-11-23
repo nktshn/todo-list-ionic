@@ -1,11 +1,14 @@
 import { Injectable } from '@angular/core';
 import { ToastController, AlertController, Platform } from '@ionic/angular';
 import { BackButtonDetail } from '@ionic/core';
+import { Observable } from 'rxjs';
 
 @Injectable({
     providedIn: 'root'
 })
 export class AndroidApiService {
+
+    private backButtonHandler: Function;
 
     constructor(
         private toastCtrl: ToastController,
@@ -44,12 +47,22 @@ export class AndroidApiService {
         })
     }
 
-    onBackButton(handler: Function) {
-        this.platform.backButton.subscribe((res: BackButtonDetail) => {
-            res.register(1, () => {
-                handler();
-            }) 
+    // onBackButton() {
+    //     return new Observable(obs => {
+    //         let sub = this.platform.backButton.subscribe(() => {
+    //             obs.next();
+    //             // sub.unsubscribe();
+    //         });
+    //     })
+    // }
+    registerBackButton() {
+        this.platform.backButton.subscribe(() => {
+            this.backButtonHandler();
         });
+    }
+
+    setBackButtonHandler(handler: Function) {
+        this.backButtonHandler = handler;
     }
 
     closeApp() {

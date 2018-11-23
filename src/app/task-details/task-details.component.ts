@@ -9,13 +9,14 @@ import { PrioritySelectComponent } from 'src/shared/components/priority-select/p
 import { DatepickerOptions } from 'ng2-datepicker';
 import { TaskDetailsService } from './task-details.service';
 import { Task } from 'src/models/Task';
+import { Subscription } from 'rxjs';
 
 @Component({
     selector: 'app-task-details',
     templateUrl: './task-details.component.html',
     styleUrls: ['./task-details.component.scss']
 })
-export class TaskDetailsComponent implements OnInit {
+export class TaskDetailsComponent {
 
     task: TaskResponse;
     isPrioritySelectorShown: boolean;
@@ -30,23 +31,19 @@ export class TaskDetailsComponent implements OnInit {
         }
     }
 
-    get readyToCreate() {
-        return this.task.title &&
-                this.task.description &&
-                this.task.priority &&
-                this.task.targetDate
-    }
-
     constructor(
-        private route: ActivatedRoute,
+        private activatedRoute: ActivatedRoute,
         private router: Router,
         private androidApi: AndroidApiService,
         private androidStorage: AndroidStoreService,
         private service: TaskDetailsService
     ) { }
 
-    ngOnInit() {
-        this.route.params.subscribe(params => {
+    ngAfterViewInit() {
+        this.androidApi.presentToast(this.router.url);
+
+
+        this.activatedRoute.params.subscribe(params => {
             if (params['id'] !== 'new') {
                 this.androidStorage.getTask(params['id']).subscribe(task => {
                     this.task = task;
@@ -56,10 +53,10 @@ export class TaskDetailsComponent implements OnInit {
                 this.task = new TaskResponse();
             }
         })
-
-        this.androidApi.onBackButton(()=>{
-            this.router.navigateByUrl('/home');
-        });
+        
+        this.androidApi.setBackButtonHandler(() => {
+            this.router.navigateByUrl('home');
+        })
     }
 
     onCreateTask() {

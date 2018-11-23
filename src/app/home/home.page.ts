@@ -13,7 +13,7 @@ import { TaskDetailsService } from '../task-details/task-details.service';
     templateUrl: 'home.page.html',
     styleUrls: ['home.page.scss'],
 })
-export class HomePage implements OnInit {
+export class HomePage {
 
     tasks: Task[];
 
@@ -29,26 +29,26 @@ export class HomePage implements OnInit {
 
     }
 
-    ngOnInit(): void {
+    ngAfterViewInit(): void {
+        this.androidApi.presentToast(this.router.url);
         this.loadTasks();
 
-        this.androidApi.onBackButton(()=> {
+        this.androidApi.setBackButtonHandler(() => {
             this.androidApi.showConfirm('Exit', 'Are you sure?', 'Cancel', 'Exit',
-            () => {
-                //
-            },
-            () => {
-                this.androidApi.closeApp();
-            })
+                () => {
+                    //
+                },
+                () => {
+                    this.androidApi.closeApp();
+                })
         })
     }
 
     onRedirect(url: string, params: any) {
-        this.router.navigate([url], {relativeTo: this.activatedRoute});
+        this.router.navigate([url], { relativeTo: this.activatedRoute });
     }
 
     onCreateTask() {
-        console.log('create');
         this.onRedirect('/task/new', null);
     }
 
@@ -59,8 +59,6 @@ export class HomePage implements OnInit {
             this.loadTasks();
         });
     }
-
-
 
     getPriorityColor(id) {
         return Priority.colorMap[id];
