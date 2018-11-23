@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
-import { ToastController, AlertController } from '@ionic/angular';
+import { ToastController, AlertController, Platform } from '@ionic/angular';
+import { BackButtonDetail } from '@ionic/core';
 
 @Injectable({
     providedIn: 'root'
@@ -8,7 +9,8 @@ export class AndroidApiService {
 
     constructor(
         private toastCtrl: ToastController,
-        public alertCtrl: AlertController
+        public alertCtrl: AlertController,
+        private platform: Platform,
     ) { }
 
     presentToast(message) {
@@ -40,5 +42,17 @@ export class AndroidApiService {
         confirm.then(res => {
             res.present();
         })
+    }
+
+    onBackButton(handler: Function) {
+        this.platform.backButton.subscribe((res: BackButtonDetail) => {
+            res.register(1, () => {
+                handler();
+            }) 
+        });
+    }
+
+    closeApp() {
+        navigator['app'].exitApp();
     }
 }

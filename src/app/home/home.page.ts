@@ -4,7 +4,7 @@ import { AndroidStoreService } from 'src/services/android-store.service';
 import { TaskResponse } from 'src/models/TaskResponse';
 import { Priority } from 'src/models/Priority';
 import { Router, ActivatedRoute } from '@angular/router';
-import { ModalController } from '@ionic/angular';
+import { ModalController, Platform } from '@ionic/angular';
 import { AndroidApiService } from 'src/services/android-api.service';
 import { TaskDetailsService } from '../task-details/task-details.service';
 
@@ -22,7 +22,8 @@ export class HomePage implements OnInit {
         private androidApi: AndroidApiService,
         private router: Router,
         private taskDetailsService: TaskDetailsService,
-        private activatedRoute: ActivatedRoute
+        private activatedRoute: ActivatedRoute,
+        private platform: Platform
 
     ) {
 
@@ -30,6 +31,16 @@ export class HomePage implements OnInit {
 
     ngOnInit(): void {
         this.loadTasks();
+
+        this.androidApi.onBackButton(()=> {
+            this.androidApi.showConfirm('Exit', 'Are you sure?', 'Cancel', 'Exit',
+            () => {
+                //
+            },
+            () => {
+                this.androidApi.closeApp();
+            })
+        })
     }
 
     onRedirect(url: string, params: any) {

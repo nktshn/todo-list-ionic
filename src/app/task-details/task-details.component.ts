@@ -30,6 +30,13 @@ export class TaskDetailsComponent implements OnInit {
         }
     }
 
+    get readyToCreate() {
+        return this.task.title &&
+                this.task.description &&
+                this.task.priority &&
+                this.task.targetDate
+    }
+
     constructor(
         private route: ActivatedRoute,
         private router: Router,
@@ -48,12 +55,19 @@ export class TaskDetailsComponent implements OnInit {
             } else {
                 this.task = new TaskResponse();
             }
-
         })
+
+        this.androidApi.onBackButton(()=>{
+            this.router.navigateByUrl('/home');
+        });
     }
 
     onCreateTask() {
-        this.task.targetDate = this.date.getTime() / 1000;
+        this.task.targetDate = this.date ? this.date.getTime() / 1000 : Date.now() / 1000;
+        if (!(this.task.title && this.task.description && this.task.priority && this.task.targetDate)) {
+            this.androidApi.presentToast('Please fill out all the fields');
+            return;
+        };
         this.androidStorage.createTask(this.task).subscribe(res => {
             if (res) {
                 this.androidApi.presentToast('Task has been created successfully');
