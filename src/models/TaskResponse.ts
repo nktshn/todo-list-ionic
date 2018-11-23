@@ -1,5 +1,5 @@
 import { Task } from "./Task";
 
-export interface TaskResponse extends Task {
+export class TaskResponse extends Task {
     id: number;
 }

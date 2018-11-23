@@ -1,6 +1,6 @@
 import { Priority } from "./Priority";
 
-export interface Task {
+export class Task {
     title: string;
     description: string;
     priority: Priority;

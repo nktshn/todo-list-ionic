@@ -3,7 +3,7 @@ import { Task } from 'src/models/Task';
 import { AndroidStoreService } from 'src/services/android-store.service';
 import { TaskResponse } from 'src/models/TaskResponse';
 import { Priority } from 'src/models/Priority';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { ModalController } from '@ionic/angular';
 import { AndroidApiService } from 'src/services/android-api.service';
 import { TaskDetailsService } from '../task-details/task-details.service';
@@ -21,7 +21,8 @@ export class HomePage implements OnInit {
         private androidStore: AndroidStoreService,
         private androidApi: AndroidApiService,
         private router: Router,
-        private taskDetailsService: TaskDetailsService
+        private taskDetailsService: TaskDetailsService,
+        private activatedRoute: ActivatedRoute
 
     ) {
 
@@ -32,12 +33,12 @@ export class HomePage implements OnInit {
     }
 
     onRedirect(url: string, params: any) {
-        this.router.navigate([url], params);
+        this.router.navigate([url], {relativeTo: this.activatedRoute});
     }
 
     onCreateTask() {
         console.log('create');
-
+        this.onRedirect('/task/new', null);
     }
 
     onRemoveTask(taskId, event) {

@@ -20,9 +20,11 @@
     @include box();
     transition: 0.2s;
     transition-timing-function: ease-out;
+
     &:active {
-      background-color: $almostWhite;
+        background-color: $almostWhite;
     }
+
     &:last-child {
         margin-bottom: 70px;
     }
@@ -58,8 +60,31 @@
     padding-top: 6px;
 }
 
-.task ion-icon, {
+.task ion-icon,
+    {
     height: 30px;
     width: 30px;
     color: $softGrey;
+}
+
+.info {
+    display: flex;
+    flex-direction: row-reverse;
+    color: lightgrey;
+    text-align: center;
+    font-size: 35px;
+    justify-content: space-between;
+
+    img {
+        height: 100px;
+        width: 120px;
+        transform: rotate(0deg) scaleY(-1);
+        opacity: 0.1;
+        margin-top: 15px;
+    }
+
+    div {
+        width: 60%;
+        margin-top: 20px;
+    }
 }

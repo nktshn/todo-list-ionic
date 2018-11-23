@@ -27,5 +27,12 @@
                 <span class="task-date">{{task.targetDate | unixDate}}</span>
             </div>
         </div>
+        <div *ngIf="tasks?.length === 0" class="info">
+            <img src="./../../assets/arrow.png" alt="">
+            <div>
+                <h3>No tasks :(</h3>
+                <h4>You can create the first one!</h4>
+            </div>
+        </div>
     </div>
 </ion-content>

@@ -8,6 +8,7 @@ import { ModalController } from '@ionic/angular';
 import { PrioritySelectComponent } from 'src/shared/components/priority-select/priority-select.component';
 import { DatepickerOptions } from 'ng2-datepicker';
 import { TaskDetailsService } from './task-details.service';
+import { Task } from 'src/models/Task';
 
 @Component({
     selector: 'app-task-details',
@@ -39,10 +40,25 @@ export class TaskDetailsComponent implements OnInit {
 
     ngOnInit() {
         this.route.params.subscribe(params => {
-            this.androidStorage.getTask(params['id']).subscribe(task => {
-                this.task = task;
-                this.date = new Date(this.task.targetDate * 1000);
-            })
+            if (params['id'] !== 'new') {
+                this.androidStorage.getTask(params['id']).subscribe(task => {
+                    this.task = task;
+                    this.date = new Date(this.task.targetDate * 1000);
+                });
+            } else {
+                this.task = new TaskResponse();
+            }
+
+        })
+    }
+
+    onCreateTask() {
+        this.task.targetDate = this.date.getTime() / 1000;
+        this.androidStorage.createTask(this.task).subscribe(res => {
+            if (res) {
+                this.androidApi.presentToast('Task has been created successfully');
+                this.router.navigateByUrl('home');
+            }
         })
     }
 
@@ -71,7 +87,7 @@ export class TaskDetailsComponent implements OnInit {
 
     onRemoveTask() {
         this.service.showRemoveTaskConfirmation(this.task.id).subscribe(res => {
-            
+
         });
     }
 

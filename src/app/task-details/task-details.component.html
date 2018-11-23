@@ -2,10 +2,11 @@
     <header>
         <div class="header-left-part">
             <ion-icon [routerLink]="'/home'" name="arrow-back"></ion-icon>
-            <span *ngIf="task">Task #{{task.id}}</span>
+            <span *ngIf="task?.id">Task #{{task.id}}</span>
+            <span *ngIf="task?.id === undefined">Create task</span>
         </div>
         <div class="header-right-part">
-            <ion-icon (click)="onEditTask()" class="right-icon" name="checkmark"></ion-icon>
+            <ion-icon (click)="task.id ? onEditTask() : onCreateTask()" class="right-icon" name="checkmark"></ion-icon>
         </div>
     </header>
     <div class="content">
@@ -22,11 +23,11 @@
                     </div>
                     <div class="bottom-block">
                         <div class="task-top">
-                            <div *ngIf="!isPrioritySelectorShown" class="block">
+                            <div *ngIf="!isPrioritySelectorShown && task.priority" class="block">
                                 <span>Priority: </span>
                                 <span class="priority-badge" (click)="onSelectPriority()" [ngStyle]="{'background-color': getPriorityColor(task.priority.id)}">{{task.priority.title}}</span>
                             </div>
-                            <div *ngIf="isPrioritySelectorShown" class="block">
+                            <div *ngIf="isPrioritySelectorShown || !task.priority" class="block">
                                 <app-priority-select (prioritySelected)="onPrioritySelected($event)"></app-priority-select>
                             </div>
                             <div class="block fa">
