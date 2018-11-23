@@ -47,14 +47,6 @@ export class AndroidApiService {
         })
     }
 
-    // onBackButton() {
-    //     return new Observable(obs => {
-    //         let sub = this.platform.backButton.subscribe(() => {
-    //             obs.next();
-    //             // sub.unsubscribe();
-    //         });
-    //     })
-    // }
     registerBackButton() {
         this.platform.backButton.subscribe(() => {
             this.backButtonHandler();
