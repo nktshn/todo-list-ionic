@@ -3,7 +3,6 @@ Here's a simple Ionic 4 app which works with web storage.
 Type - Angular
 
 ## Features:
-- Uses web storage to store data. Saves as JSON string and parse it back
+- Uses web storage to store data. Saves as JSON string and parses it back
 - Hardware back-button custom handler, app closing.
-- All storage operations works with Rx.Observables
-- 
+- All storage operations work with Rx.Observables
